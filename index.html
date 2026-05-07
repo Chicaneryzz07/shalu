@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teri Kahani — A Love Story</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- MUSIC BUTTON -->
+  <button id="music-btn" title="Play/Pause Music">♪</button>
+  <div id="music-label">♫ Indian Instrumental · Playing</div>
+
+  <!-- Free Indian/Bollywood instrumental from Pixabay (CC0 license, no copyright) -->
+  <audio id="bg-music" loop crossorigin="anonymous">
+    <source src="music1.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_fbd0c4c264.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- NAV DOTS -->
+  <nav class="nav-dots" aria-label="Section navigation">
+    <div class="nav-dot active" data-section="0"></div>
+    <div class="nav-dot" data-section="1"></div>
+    <div class="nav-dot" data-section="2"></div>
+    <div class="nav-dot" data-section="3"></div>
+    <div class="nav-dot" data-section="4"></div>
+    <div class="nav-dot" data-section="5"></div>
+  </nav>
+
+  <!-- ═══════════════════ HEADER / TITLE CARD ═══════════════════ -->
+  <header id="sec-0">
+    <div class="sprocket-strip left" id="sprockets-l"></div>
+    <div class="sprocket-strip right" id="sprockets-r"></div>
+    <div class="floating-hearts" id="header-hearts"></div>
+
+    <div class="header-inner">
+      <div class="film-badge">★ A Bollywood Love Story ★</div>
+      <h1 class="header-title">
+        Teri<br>
+        <em>Kahani</em>
+      </h1>
+      <p class="header-subtitle">
+        Pyaar ki ek kahani... jahan dil milte hain,<br>
+        aur har geet ek nayi duniya kehta hai
+      </p>
+      <div class="scroll-cue">
+        <span>Scroll to Begin</span>
+        <div class="arrow"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- REEL DIVIDER -->
+  <div class="reel-divider">
+    <div class="reel-track" id="reel1"></div>
+  </div>
+
+  <!-- ═══════════════════ SCENE 1: MOHABBATEIN ═══════════════════ -->
+  <section class="scene-mohabbatein" id="sec-1">
+    <div class="page-turn-line"></div>
+    <div class="scene-inner reveal">
+      <div class="movie-card">
+        <div class="movie-poster-frame">
+          <div class="poster-border">
+            <!-- SVG Poster Art -->
+            <svg class="poster-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="pg1" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#8B4513" />
+                  <stop offset="100%" stop-color="#1a0800" />
+                </radialGradient>
+                <filter id="blur1">
+                  <feGaussianBlur stdDeviation="2" />
+                </filter>
+              </defs>
+              <rect width="300" height="400" fill="url(#pg1)" />
+              <!-- Moon -->
+              <circle cx="150" cy="80" r="48" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.4" />
+              <circle cx="150" cy="80" r="36" fill="rgba(201,168,76,0.15)" />
+              <!-- Silhouette couple -->
+              <ellipse cx="110" cy="300" rx="30" ry="60" fill="#0f0500" />
+              <ellipse cx="185" cy="300" rx="28" ry="58" fill="#0f0500" />
+              <circle cx="110" cy="230" r="20" fill="#0f0500" />
+              <circle cx="185" cy="232" r="18" fill="#0f0500" />
+              <!-- Hair flowing -->
+              <path d="M170 232 Q155 270 148 310" stroke="#0f0500" stroke-width="18" fill="none" />
+              <!-- Violin -->
+              <path d="M220 180 Q228 160 220 140 Q215 125 220 110 Q228 96 220 85" stroke="#c9a84c" stroke-width="3"
+                fill="none" opacity="0.7" />
+              <!-- Stars -->
+              <g fill="#c9a84c" opacity="0.6">
+                <circle cx="40" cy="40" r="1.5" />
+                <circle cx="260" cy="30" r="1" />
+                <circle cx="80" cy="20" r="1" />
+                <circle cx="200" cy="50" r="1.5" />
+                <circle cx="30" cy="120" r="1" />
+                <circle cx="270" cy="100" r="1.5" />
+              </g>
+              <!-- Title text in poster -->
+              <text x="150" y="370" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#c9a84c"
+                letter-spacing="2">MOHABBATEIN</text>
+              <text x="150" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="9"
+                fill="rgba(201,168,76,0.6)" letter-spacing="4">2000</text>
+            </svg>
+            <div class="poster-title-strip">Mohabbatein · 2000</div>
+          </div>
+        </div>
+        <div class="movie-info">
+          <div class="movie-year-badge">★ 2000 · Yash Raj Films</div>
+          <h2 class="movie-title">Mohab<span>batein</span></h2>
+          <div class="hindi-lyric">
+            "Mohabbat bhi zindagi ki tarah hoti hai...<br>
+            har mod pe naya safar milta hai"
+          </div>
+          <p class="movie-desc">
+            A timeless tale of love that defies tradition — where a music teacher's melodies carry
+            the spirit of forbidden love, and six hearts learn that true love never truly dies.
+            Set in the hallowed halls of Gurukul, this is a saga of passion, pain, and perseverance.
+          </p>
+          <div class="star-cast">
+            <span class="star-tag">Amitabh Bachchan</span>
+            <span class="star-tag">Shah Rukh Khan</span>
+            <span class="star-tag">Aishwarya Rai</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL DIVIDER -->
+  <div class="reel-divider">
+    <div class="reel-track" id="reel2"></div>
+  </div>
+
+  <!-- ═══════════════════ SCENE 2: KUCH KUCH HOTA HAI ═══════════════════ -->
+  <section class="scene-kkh" id="sec-2">
+    <div class="page-turn-line"></div>
+    <div class="floating-hearts" id="kkh-hearts"></div>
+    <div class="scene-inner reveal">
+      <div class="movie-card">
+        <div class="movie-info" style="order: 1;">
+          <div class="movie-year-badge">★ 1998 · Dharma Productions</div>
+          <h2 class="movie-title">Kuch Kuch <span>Hota Hai</span></h2>
+          <div class="hindi-lyric">
+            "Kuch kuch hota hai, Rahul...<br>
+            tum nahi samjhoge"
+          </div>
+          <p class="movie-desc">
+            A story told across two lifetimes — where college friendship blossoms into love
+            unspoken, and a child's innocent wish weaves together hearts that were always meant
+            to find each other. The rain, the letters, and the orange dupatta — all eternal.
+          </p>
+          <div class="star-cast">
+            <span class="star-tag">Shah Rukh Khan</span>
+            <span class="star-tag">Kajol</span>
+            <span class="star-tag">Rani Mukerji</span>
+          </div>
+        </div>
+        <div class="movie-poster-frame" style="order: 2;">
+          <div class="poster-border">
+            <svg class="poster-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="pg2" cx="50%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#7a1e2e" />
+                  <stop offset="100%" stop-color="#0f0500" />
+                </radialGradient>
+              </defs>
+              <rect width="300" height="400" fill="url(#pg2)" />
+              <!-- Rain drops -->
+              <g stroke="rgba(201,168,76,0.3)" stroke-width="1">
+                <line x1="20" y1="0" x2="15" y2="40" />
+                <line x1="60" y1="10" x2="55" y2="50" />
+                <line x1="100" y1="0" x2="95" y2="45" />
+                <line x1="140" y1="5" x2="135" y2="50" />
+                <line x1="180" y1="0" x2="175" y2="40" />
+                <line x1="220" y1="8" x2="215" y2="48" />
+                <line x1="260" y1="0" x2="255" y2="42" />
+                <line x1="290" y1="12" x2="285" y2="52" />
+              </g>
+              <!-- Heart shape -->
+              <path
+                d="M150 200 C150 200 100 160 100 130 C100 110 115 100 130 105 C140 108 150 120 150 120 C150 120 160 108 170 105 C185 100 200 110 200 130 C200 160 150 200 150 200Z"
+                fill="rgba(168,50,72,0.6)" stroke="#c9a84c" stroke-width="1.5" />
+              <!-- Letter/envelope -->
+              <rect x="90" y="230" width="120" height="80" rx="4" fill="none" stroke="rgba(201,168,76,0.5)"
+                stroke-width="1.5" />
+              <path d="M90 234 L150 275 L210 234" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" fill="none" />
+              <!-- Stars -->
+              <g fill="#c9a84c" opacity="0.7">
+                <text x="25" y="55" font-size="14">✦</text><text x="240" y="80" font-size="10">✦</text>
+                <text x="70" y="90" font-size="8">★</text><text x="250" y="140" font-size="8">★</text>
+              </g>
+              <text x="150" y="355" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#c9a84c"
+                letter-spacing="1">KUCH KUCH HOTA HAI</text>
+              <text x="150" y="375" text-anchor="middle" font-family="Georgia,serif" font-size="9"
+                fill="rgba(201,168,76,0.5)" letter-spacing="3">1998</text>
+            </svg>
+            <div class="poster-title-strip">K.K.H.H. · 1998</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL DIVIDER -->
+  <div class="reel-divider">
+    <div class="reel-track" id="reel3"></div>
+  </div>
+
+  <!-- ═══════════════════ SCENE 3: DIL TO PAGAL HAI ═══════════════════ -->
+  <section class="scene-dtph" id="sec-3">
+    <div class="page-turn-line"></div>
+    <div class="scene-inner reveal">
+      <div class="movie-card">
+        <div class="movie-poster-frame">
+          <div class="poster-border">
+            <svg class="poster-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="pg3" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#3a1a00" />
+                  <stop offset="100%" stop-color="#0f0500" />
+                </radialGradient>
+              </defs>
+              <rect width="300" height="400" fill="url(#pg3)" />
+              <!-- Dance stage -->
+              <ellipse cx="150" cy="360" rx="130" ry="20" fill="rgba(201,168,76,0.1)" />
+              <!-- Spotlight -->
+              <path d="M150 0 L50 360 L250 360 Z" fill="rgba(201,168,76,0.05)" />
+              <!-- Dancer silhouette -->
+              <circle cx="150" cy="180" r="22" fill="#1a0800" />
+              <path d="M150 202 L150 290" stroke="#1a0800" stroke-width="14" />
+              <path d="M150 220 Q120 240 100 260" stroke="#1a0800" stroke-width="10" fill="none" />
+              <path d="M150 220 Q185 200 210 215" stroke="#1a0800" stroke-width="10" fill="none" />
+              <path d="M150 290 Q130 320 115 355" stroke="#1a0800" stroke-width="12" fill="none" />
+              <path d="M150 290 Q170 318 188 352" stroke="#1a0800" stroke-width="12" fill="none" />
+              <!-- Musical notes -->
+              <g fill="rgba(201,168,76,0.6)" font-size="20">
+                <text x="30" y="120">♩</text><text x="240" y="100">♪</text>
+                <text x="260" y="200">♫</text><text x="15" y="220">♬</text>
+              </g>
+              <!-- Petals -->
+              <g fill="rgba(168,50,72,0.5)" font-size="12">
+                <text x="50" y="160">🌸</text><text x="220" y="150">🌸</text>
+                <text x="80" y="300">🌸</text><text x="195" y="280">🌸</text>
+              </g>
+              <text x="150" y="385" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#c9a84c"
+                letter-spacing="1">DIL TO PAGAL HAI</text>
+              <text x="150" y="398" text-anchor="middle" font-family="Georgia,serif" font-size="8"
+                fill="rgba(201,168,76,0.5)" letter-spacing="3">1997</text>
+            </svg>
+            <div class="poster-title-strip">D.T.P.H. · 1997</div>
+          </div>
+        </div>
+        <div class="movie-info">
+          <div class="movie-year-badge">★ 1997 · Yash Raj Films</div>
+          <h2 class="movie-title">Dil To <span>Pagal Hai</span></h2>
+          <div class="hindi-lyric">
+            "Dil to pagal hai, dil deewana hai...<br>
+            Ek haseena ka dil yeh maane na"
+          </div>
+          <p class="movie-desc">
+            Where dance is the language of the heart and destiny plays the choreographer.
+            A musical journey of three souls entangled in love's beautiful chaos —
+            proving that somewhere, someone is made just for you.
+          </p>
+          <div class="star-cast">
+            <span class="star-tag">Shah Rukh Khan</span>
+            <span class="star-tag">Madhuri Dixit</span>
+            <span class="star-tag">Karisma Kapoor</span>
+          </div>
+          <div class="divider" style="margin-top:28px; max-width:260px;">
+            <span>★ ✦ ★</span>
+          </div>
+          <div style="margin-top:20px; display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div
+                style="font-family:'Cormorant Garamond',serif; font-size:13px; color:var(--sepia); border:1px solid rgba(201,168,76,0.4); padding:6px 14px;">
+                ♪ Dilwale Dulhania Le Jayenge · 1995</div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div
+                style="font-family:'Cormorant Garamond',serif; font-size:13px; color:var(--sepia); border:1px solid rgba(201,168,76,0.4); padding:6px 14px;">
+                ♪ Kabhi Khushi Kabhie Gham · 2001</div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div
+                style="font-family:'Cormorant Garamond',serif; font-size:13px; color:var(--sepia); border:1px solid rgba(201,168,76,0.4); padding:6px 14px;">
+                ♪ Hum Dil De Chuke Sanam · 1999</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL DIVIDER -->
+  <div class="reel-divider">
+    <div class="reel-track" id="reel4"></div>
+  </div>
+
+  <!-- ═══════════════════ SCENE 4: QUOTES ═══════════════════ -->
+  <section class="scene-quotes" id="sec-4">
+    <div class="page-turn-line"></div>
+    <div style="max-width:1100px; margin:0 auto; width:100%;">
+      <div class="reveal" style="text-align:center; margin-bottom:60px;">
+        <p style="font-size:11px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:16px;">
+          ★ Timeless Words ★</p>
+        <h2
+          style="font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,60px); color:var(--cream); font-weight:700;">
+          Dil ke alfaaz</h2>
+        <p
+          style="font-family:'IM Fell English',serif; font-style:italic; color:var(--parchment); margin-top:12px; font-size:18px;">
+          Words that live forever in the heart</p>
+      </div>
+      <div class="quotes-grid reveal">
+        <div class="quote-card">
+          <p class="quote-text">"Pyaar dosti hai... agar woh meri sabse achhi dost nahin ban sakti, toh main usse kabhi
+            pyaar kar hi nahi sakta"</p>
+          <p class="quote-source">Kuch Kuch Hota Hai · 1998</p>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">"Bade bade deshon mein aisi choti choti baatein hoti rehti hain, Senorita"</p>
+          <p class="quote-source">Dilwale Dulhania Le Jayenge · 1995</p>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">"Zindagi mein jo bhi khoya, dil ke kisi kone mein woh mohabbat baki rehti hai"</p>
+          <p class="quote-source">Mohabbatein · 2000</p>
+        </div>
+      </div>
+      <div class="quotes-grid reveal" style="margin-top:28px;">
+        <div class="quote-card">
+          <p class="quote-text">"Dil to pagal hai... koi hai jo wahan hai, mera intezaar kar raha hai"</p>
+          <p class="quote-source">Dil To Pagal Hai · 1997</p>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">"Ek baar jo maine commitment kar di, phir toh main apne aap ki bhi nahi sunta"</p>
+          <p class="quote-source">Wanted · 2009</p>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">"Kabhi kabhi kuch jeetne ke liye, kuch haarna bhi padta hai"</p>
+          <p class="quote-source">Kal Ho Naa Ho · 2003</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL DIVIDER -->
+  <div class="reel-divider">
+    <div class="reel-track" id="reel5"></div>
+  </div>
+
+  <!-- ═══════════════════ SCENE 5: SONGS ═══════════════════ -->
+  <section class="scene-songs" id="sec-5">
+    <div class="page-turn-line"></div>
+    <div class="reveal">
+      <p
+        style="text-align:center; font-size:11px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:14px;">
+        ★ Golden Melodies ★</p>
+      <h2 class="songs-title">Yaadon ke Geet</h2>
+      <p class="songs-subtitle">Songs that wrote themselves on the heart...</p>
+      <div class="songs-grid">
+        <div class="song-row">
+          <span class="song-num">01</span>
+          <span class="song-note">🎵</span>
+          <div class="song-info">
+            <div class="song-name">Tujhe Dekha To</div>
+            <div class="song-film">Dilwale Dulhania Le Jayenge</div>
+          </div>
+          <span class="song-year">1995</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">02</span>
+          <span class="song-note">🎶</span>
+          <div class="song-info">
+            <div class="song-name">Kuch Kuch Hota Hai</div>
+            <div class="song-film">Kuch Kuch Hota Hai</div>
+          </div>
+          <span class="song-year">1998</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">03</span>
+          <span class="song-note">🎵</span>
+          <div class="song-info">
+            <div class="song-name">Dil To Pagal Hai</div>
+            <div class="song-film">Dil To Pagal Hai</div>
+          </div>
+          <span class="song-year">1997</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">04</span>
+          <span class="song-note">🎶</span>
+          <div class="song-info">
+            <div class="song-name">Mohabbatein Lutaane Aaya Hoon</div>
+            <div class="song-film">Mohabbatein</div>
+          </div>
+          <span class="song-year">2000</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">05</span>
+          <span class="song-note">🎵</span>
+          <div class="song-info">
+            <div class="song-name">Suraj Hua Maddham</div>
+            <div class="song-film">Kabhi Khushi Kabhie Gham</div>
+          </div>
+          <span class="song-year">2001</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">06</span>
+          <span class="song-note">🎶</span>
+          <div class="song-info">
+            <div class="song-name">Aankhon Ki Gustakhiyan</div>
+            <div class="song-film">Hum Dil De Chuke Sanam</div>
+          </div>
+          <span class="song-year">1999</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">07</span>
+          <span class="song-note">🎵</span>
+          <div class="song-info">
+            <div class="song-name">Yeh Dil Deewana</div>
+            <div class="song-film">Pardes</div>
+          </div>
+          <span class="song-year">1997</span>
+        </div>
+        <div class="song-row">
+          <span class="song-num">08</span>
+          <span class="song-note">🎶</span>
+          <div class="song-info">
+            <div class="song-name">Pehla Nasha</div>
+            <div class="song-film">Jo Jeeta Wohi Sikandar</div>
+          </div>
+          <span class="song-year">1992</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL DIVIDER -->
+  <div class="reel-divider">
+    <div class="reel-track" id="reel6"></div>
+  </div>
+
+  <!-- ═══════════════════ SCENE 6: FINALE ═══════════════════ -->
+  <section class="scene-finale" id="sec-6">
+    <div class="floating-hearts" id="finale-hearts"></div>
+    <div class="finale-inner reveal">
+      <span class="finale-icon">♥</span>
+      <h2 class="finale-title">
+        Made for<br>
+        <em>Your Beautiful Eyes</em>
+      </h2>
+      <p class="finale-text">
+        Just like the heroines of these golden films —
+        effortlessly graceful, impossibly radiant,
+        and loved beyond the written word...
+        <br><br>
+        This little story was written for you.
+      </p>
+      <div class="divider" style="margin: 28px auto; max-width: 300px; color: rgba(201,168,76,0.6);">
+        <span>✦ ♥ ✦</span>
+      </div>
+      <p
+        style="font-family:'IM Fell English',serif; font-style:italic; font-size:16px; color: rgba(237,224,196,0.7); line-height:1.9;">
+        "Tum mile, dil khila<br>
+        Aur kuch na chaahe hum"
+      </p>
+      <div class="finale-signature">
+        — Tumhara Dil ♥
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ── BUILD FILM SPROCKETS ──
+    function buildSprockets(id, count) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('div');
+        s.className = 'sprocket';
+        el.appendChild(s);
+      }
+    }
+    buildSprockets('sprockets-l', 30);
+    buildSprockets('sprockets-r', 30);
+
+    // ── BUILD REEL TRACKS ──
+    function buildReel(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      let html = '';
+      for (let i = 0; i < 40; i++) {
+        html += `<div class="reel-frame"><div class="reel-hole"></div></div>`;
+      }
+      el.innerHTML = html + html; // doubled for seamless loop
+    }
+    ['reel1', 'reel2', 'reel3', 'reel4', 'reel5', 'reel6'].forEach(buildReel);
+
+    // ── SPAWN FLOATING HEARTS ──
+    function spawnHearts(containerId, count) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const hearts = ['♥', '♡', '❤', '💕', '✦'];
+      for (let i = 0; i < count; i++) {
+        const h = document.createElement('span');
+        h.className = 'fheart';
+        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        h.style.left = Math.random() * 100 + '%';
+        h.style.animationDuration = (6 + Math.random() * 10) + 's';
+        h.style.animationDelay = (Math.random() * 8) + 's';
+        h.style.fontSize = (10 + Math.random() * 14) + 'px';
+        h.style.color = Math.random() > 0.5 ? '#c9a84c' : '#a83248';
+        container.appendChild(h);
+      }
+    }
+    spawnHearts('header-hearts', 20);
+    spawnHearts('kkh-hearts', 15);
+    spawnHearts('finale-hearts', 25);
+
+    // ── ROSE PETALS ON HEADER ──
+    (function () {
+      const header = document.querySelector('header');
+      const petals = ['🌸', '🌺', '✿', '❀'];
+      for (let i = 0; i < 12; i++) {
+        const p = document.createElement('span');
+        p.className = 'rose-petal';
+        p.textContent = petals[Math.floor(Math.random() * petals.length)];
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (8 + Math.random() * 12) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        header.appendChild(p);
+      }
+    })();
+
+    // ── MUSIC PLAYER ──
+    const musicBtn = document.getElementById('music-btn');
+    const audio = document.getElementById('bg-music');
+
+    // Playlist of free Indian/Bollywood instrumental tracks (Pixabay CC0)
+    const playlist = [
+      // Indian flute / sitar style instrumentals from Pixabay (free, no copyright)
+      "https://cdn.pixabay.com/download/audio/2022/10/25/audio_fbd0c4c264.mp3",
+      "https://cdn.pixabay.com/download/audio/2023/04/05/audio_8ab96e0f90.mp3",
+      "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3"
+    ];
+    let trackIndex = 0;
+    audio.src = playlist[trackIndex];
+    audio.volume = 0.7;
+
+    // On audio error, try next track
+    audio.addEventListener('error', () => {
+      trackIndex = (trackIndex + 1) % playlist.length;
+      audio.src = playlist[trackIndex];
+      if (audio._shouldPlay) audio.play().catch(() => { });
+    });
+
+    audio._shouldPlay = false;
+
+    function startMusic() {
+      audio._shouldPlay = true;
+      audio.play().then(() => {
+        musicBtn.textContent = '♫';
+        musicBtn.classList.add('playing');
+      }).catch(() => {
+        // If autoplay blocked, show user feedback
+        musicBtn.textContent = '♪';
+        musicBtn.title = 'Click to play music';
+      });
+    }
+
+    function stopMusic() {
+      audio._shouldPlay = false;
+      audio.pause();
+      musicBtn.textContent = '♪';
+      musicBtn.classList.remove('playing');
+    }
+
+    musicBtn.addEventListener('click', () => {
+      if (!audio.paused) stopMusic();
+      else startMusic();
+    });
+
+    // ── SCROLL REVEAL ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+
+    // ── NAV DOTS ──
+    const sections = ['sec-0', 'sec-1', 'sec-2', 'sec-3', 'sec-4', 'sec-5', 'sec-6'];
+    const dots = document.querySelectorAll('.nav-dot');
+    const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        if (sectionEls[i]) sectionEls[i].scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY + window.innerHeight / 2;
+      let active = 0;
+      sectionEls.forEach((sec, i) => {
+        if (sec && sec.offsetTop <= scrollY) active = i;
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === active));
+    }, { passive: true });
+  </script>
+</body>
+
+</html>

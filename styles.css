@@ -1,0 +1,654 @@
+
+  :root {
+    --cream: #f5ead6;
+    --parchment: #ede0c4;
+    --warm-white: #fdf6e9;
+    --gold: #c9a84c;
+    --gold-light: #e0c370;
+    --brown: #5c3d1e;
+    --brown-dark: #3a2010;
+    --burgundy: #7a1e2e;
+    --burgundy-light: #a83248;
+    --sepia: #8b6340;
+    --text-main: #2e1a0e;
+    --text-soft: #6b4226;
+    --ink: #1a0a00;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--text-main);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── MUSIC BUTTON ── */
+  #music-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--brown-dark);
+    color: var(--gold-light);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35), 0 0 0 6px rgba(201,168,76,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  #music-btn:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(201,168,76,0.55), 0 0 0 10px rgba(201,168,76,0.1); }
+  #music-btn.playing { animation: pulse-ring 2s infinite; }
+  @keyframes pulse-ring {
+    0%   { box-shadow: 0 0 0 0 rgba(201,168,76,0.55); }
+    70%  { box-shadow: 0 0 0 16px rgba(201,168,76,0); }
+    100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+  }
+  #music-label {
+    position: fixed;
+    bottom: 90px;
+    right: 18px;
+    z-index: 999;
+    background: var(--brown-dark);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--gold);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  #music-btn:hover + #music-label { opacity: 1; }
+
+  /* ── FILM STRIP SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--brown-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* ── DECORATIVE DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    justify-content: center; margin: 0 auto;
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 4px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    max-width: 160px;
+  }
+
+  /* ── PAGE REEL HEADER ── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 60% 40%, rgba(122,30,46,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 70%, rgba(92,61,30,0.5) 0%, transparent 50%),
+      linear-gradient(160deg, #1a0a00 0%, #3a1a08 40%, #2a1205 70%, #0f0500 100%);
+  }
+
+  /* Film sprockets */
+  .sprocket-strip {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 40px;
+    display: flex; flex-direction: column; gap: 18px;
+    padding: 18px 8px;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+  }
+  .sprocket-strip.left { left: 0; }
+  .sprocket-strip.right { right: 0; }
+  .sprocket {
+    width: 24px; height: 18px;
+    border-radius: 4px;
+    background: transparent;
+    border: 2px solid rgba(201,168,76,0.35);
+    flex-shrink: 0;
+  }
+
+  /* Rose petals bg */
+  .rose-petal {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    animation: fall linear infinite;
+    pointer-events: none;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-60px) rotate(0deg); opacity: 0.6; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .header-inner {
+    position: relative; z-index: 5;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .film-badge {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 18px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 700;
+    line-height: 0.95;
+    color: var(--cream);
+    text-shadow: 0 0 60px rgba(201,168,76,0.4), 0 2px 8px rgba(0,0,0,0.8);
+    opacity: 0;
+    animation: fadeUp 1.2s 0.6s forwards;
+  }
+  .header-title em {
+    font-style: italic;
+    color: var(--gold-light);
+    display: block;
+    font-size: 0.65em;
+    font-weight: 400;
+  }
+
+  .header-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--parchment);
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 1.2s 1s forwards;
+    letter-spacing: 1px;
+  }
+
+  .scroll-cue {
+    margin-top: 52px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s 1.6s forwards;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .scroll-cue .arrow {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: arrowPulse 2s infinite;
+  }
+  @keyframes arrowPulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.6); opacity: 0.5; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-turn-line {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), var(--burgundy), var(--gold), transparent);
+    opacity: 0.6;
+  }
+
+  /* ── SCENE 1: MOHABBATEIN ── */
+  .scene-mohabbatein {
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      linear-gradient(180deg, #f0e2c4 0%, #e8d5a8 50%, #ddc898 100%);
+    padding: 100px 40px;
+    min-height: 100vh;
+    display: flex; align-items: center;
+  }
+
+  .scene-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .movie-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .movie-card { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .movie-poster-frame {
+    position: relative;
+  }
+
+  .poster-border {
+    border: 3px solid var(--gold);
+    padding: 12px;
+    background: var(--brown-dark);
+    box-shadow: 12px 12px 0 var(--gold), 20px 20px 40px rgba(0,0,0,0.4);
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s;
+  }
+  .poster-border:hover { transform: rotate(0deg) scale(1.02); }
+
+  .poster-art {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    filter: sepia(20%) contrast(1.1);
+  }
+
+  /* SVG poster art */
+  .poster-svg {
+    width: 100%;
+    aspect-ratio: 3/4;
+    display: block;
+  }
+
+  .poster-title-strip {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--burgundy);
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    white-space: nowrap;
+    border: 1px solid var(--gold);
+  }
+
+  .movie-info { }
+
+  .movie-year-badge {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+
+  .movie-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--brown-dark);
+    margin-bottom: 16px;
+  }
+  .movie-title span { color: var(--burgundy); }
+
+  .hindi-lyric {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 20px);
+    color: var(--sepia);
+    line-height: 1.7;
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .movie-desc {
+    font-size: clamp(14px, 1.6vw, 17px);
+    line-height: 1.8;
+    color: var(--text-soft);
+    margin-bottom: 24px;
+  }
+
+  .star-cast {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .star-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+    border: 1px solid var(--sepia);
+    padding: 4px 14px;
+    border-radius: 2px;
+  }
+
+  /* ── SCENE 2: KUCH KUCH HOTA HAI ── */
+  .scene-kkh {
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(168,50,72,0.2) 0%, transparent 55%),
+      linear-gradient(160deg, #2a1205 0%, #4a2010 40%, #3a1800 100%);
+    padding: 100px 40px;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    color: var(--cream);
+  }
+
+  .scene-kkh .movie-title { color: var(--cream); }
+  .scene-kkh .movie-title span { color: var(--gold-light); }
+  .scene-kkh .movie-year-badge { color: var(--gold-light); border-color: var(--gold); }
+  .scene-kkh .movie-desc { color: var(--parchment); }
+  .scene-kkh .hindi-lyric { color: var(--gold-light); border-color: var(--burgundy-light); }
+  .scene-kkh .star-tag { color: var(--parchment); border-color: rgba(201,168,76,0.4); }
+
+  .floating-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .fheart {
+    position: absolute;
+    font-size: 16px;
+    opacity: 0;
+    animation: floatHeart linear infinite;
+  }
+  @keyframes floatHeart {
+    0%   { transform: translateY(100vh) scale(0.5); opacity: 0.5; }
+    100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
+  }
+
+  /* ── SCENE 3: DIL TO PAGAL HAI ── */
+  .scene-dtph {
+    background:
+      radial-gradient(circle at 50% 60%, rgba(201,168,76,0.1) 0%, transparent 70%),
+      linear-gradient(180deg, #ede0c4 0%, #e0cda4 50%, #d4bc8c 100%);
+    padding: 100px 40px;
+    min-height: 100vh;
+    display: flex; align-items: center;
+  }
+
+  /* ── SCENE 4: QUOTE GALLERY ── */
+  .scene-quotes {
+    background:
+      linear-gradient(135deg, #1a0a00 0%, #2e1205 50%, #1a0800 100%);
+    padding: 100px 40px;
+    min-height: 80vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .quotes-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    text-align: center;
+  }
+
+  .quote-card {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 40px 28px;
+    position: relative;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .quote-card:hover {
+    transform: translateY(-6px);
+    background: rgba(201,168,76,0.1);
+  }
+  .quote-card::before {
+    content: '❝';
+    position: absolute;
+    top: -16px; left: 20px;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--parchment);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .quote-source {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── SCENE 5: SONGS ── */
+  .scene-songs {
+    background:
+      radial-gradient(ellipse at 40% 60%, rgba(122,30,46,0.15) 0%, transparent 60%),
+      linear-gradient(160deg, #f5ead6 0%, #ede0c4 60%, #e0cda4 100%);
+    padding: 100px 40px;
+  }
+
+  .songs-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin-bottom: 12px;
+  }
+
+  .songs-subtitle {
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--sepia);
+    margin-bottom: 60px;
+  }
+
+  .songs-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .song-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    transition: background 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .song-row:hover { background: rgba(201,168,76,0.07); padding-left: 12px; }
+
+  .song-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .song-note { font-size: 20px; flex-shrink: 0; }
+
+  .song-info { flex: 1; }
+  .song-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--brown-dark);
+    margin-bottom: 2px;
+  }
+  .song-film {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--sepia);
+  }
+  .song-year {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── SCENE 6: FINALE ── */
+  .scene-finale {
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.2) 0%, transparent 70%),
+      linear-gradient(180deg, #0f0500 0%, #2a1008 50%, #1a0800 100%);
+    padding: 120px 40px;
+    min-height: 80vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+
+  .finale-inner { max-width: 700px; }
+
+  .finale-icon {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 28px;
+    animation: heartbeat 1.5s infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15%       { transform: scale(1.2); }
+    30%       { transform: scale(1); }
+    45%       { transform: scale(1.1); }
+    60%       { transform: scale(1); }
+  }
+
+  .finale-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .finale-title em { font-style: italic; color: var(--gold-light); display: block; }
+
+  .finale-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--parchment);
+    line-height: 1.8;
+    margin: 28px 0;
+  }
+
+  .finale-signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--gold);
+    margin-top: 40px;
+  }
+
+  /* ── NAV DOTS ── */
+  .nav-dots {
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .nav-dot.active { background: var(--gold); transform: scale(1.3); }
+
+  /* ── FILM REEL DIVIDER ── */
+  .reel-divider {
+    height: 36px;
+    background: var(--brown-dark);
+    display: flex; align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .reel-track {
+    display: flex; gap: 0;
+    animation: reelScroll 8s linear infinite;
+    white-space: nowrap;
+  }
+  .reel-frame {
+    width: 52px; height: 36px;
+    border-right: 2px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .reel-hole {
+    width: 12px; height: 20px;
+    border-radius: 3px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+  @keyframes reelScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
